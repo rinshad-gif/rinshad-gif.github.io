@@ -1,0 +1,69 @@
+title: "Her Bird"
+email: "support@herbird.com"
+description: "High-end boutique for sophisticated fashion"
+baseurl: ""
+url: "http://localhost:4000"
+twitter_username: "herbird"
+github_username: "herbird"
+
+# Build settings
+theme: null
+plugins:
+  - jekyll-feed
+
+# Collections configuration - FIXED
+collections:
+  products:
+    output: true
+    permalink: /products/:slug/
+  exclusive_products:
+    output: true
+    permalink: /exclusive-products/:name/
+  testimonials:
+    output: true
+    permalink: /testimonials/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: "_pages"
+      type: "pages"
+    values:
+      layout: "page"
+
+  # CHANGE 1: Update products to use the new detailed layout
+  - scope:
+      path: "_products"
+      type: "products"
+    values:
+      layout: "product-details" 
+
+  # CHANGE 2: Do the same for exclusive products
+  - scope:
+      path: "_exclusive_products"
+      type: "exclusive_products"
+    values:
+      layout: "product-details"
+
+  - scope:
+      path: "_testimonials"
+      type: "testimonials"
+    values:
+      layout: "page"
+
+# Include these directories
+include:
+  - _pages
+  - _products
+  - _exclusive_products
+  - _testimonials
+  - admin  
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache/
+  - .jekyll-cache/

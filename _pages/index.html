@@ -1,0 +1,162 @@
+---
+layout: home
+title: Home
+permalink: /
+---
+
+{% include hero.html %}
+
+<section class="fashion-featured-section">
+    <div class="fashion-container">
+        <h2 class="editorial-heading">The Latest Collection</h2>
+        
+        <div class="editorial-product-grid">
+            {% if site.products and site.products.size > 0 %}
+                {% assign latest_products = site.products | sort: "date" | reverse %}
+                {% for product in latest_products limit: 3 %}
+                <div class="editorial-product-item">
+                    <a href="{{ product.url | relative_url }}" class="product-image-link">
+                        <div class="product-image-wrapper">
+                            {% if product.image %}
+                            <img src="{{ product.image | relative_url }}" alt="{{ product.name }}" class="editorial-product-image">
+                            <div class="product-hover-overlay">
+                                <span class="quick-view-text">Quick View</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </a>
+                    
+                    <div class="product-editorial-info">
+                        <h3 class="product-editorial-name">{{ product.name }}</h3>
+                        <span class="product-editorial-price">₹{{ product.price }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <div class="editorial-placeholder">
+                <h3>Featured Products Coming Soon</h3>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="editorial-view-all-wrapper">
+            <a href="/products/" class="editorial-view-all-link">
+                VIEW ALL COLLECTIONS
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="exclusive-feature-section">
+    <div class="exclusive-container">
+        <h2 class="exclusive-editorial-heading">Exclusive Designs</h2>
+        
+        {% if site.exclusive_products and site.exclusive_products.size > 0 %}
+            {% assign main_exclusive_product = site.exclusive_products | where: "featured", true | sort: "date" | reverse | first %}
+            
+            <div class="exclusive-main-feature">
+                <div class="exclusive-image-display">
+                    {% if main_exclusive_product.image %}
+                        <img src="{{ main_exclusive_product.image | relative_url }}" 
+                             alt="{{ main_exclusive_product.name }}" 
+                             class="exclusive-main-image">
+                    {% endif %}
+                    <div class="exclusive-ribbon">Bespoke</div>
+                </div>
+                
+                <div class="exclusive-info-panel">
+                    <span class="exclusive-subhead">The Couture Edition</span>
+                    <h3 class="exclusive-title">{{ main_exclusive_product.name }}</h3>
+                    <p class="exclusive-description">
+                        {{ main_exclusive_product.description | truncate: 200 }}
+                    </p>
+                    
+                    <div class="exclusive-price-tag">
+                        <span>Starting at</span>
+                        <span class="exclusive-price">₹{{ main_exclusive_product.price }}</span>
+                    </div>
+                    
+                    <div class="exclusive-action-wrapper">
+                        <a href="{{ main_exclusive_product.url | relative_url }}" class="exclusive-cta-link">
+                            Discover The Masterpiece
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        {% else %}
+        <div class="exclusive-placeholder">
+            <h3 class="exclusive-title">Exclusive Collection Launching Soon</h3>
+            <p>Our bespoke couture items are currently in creation.</p>
+        </div>
+        {% endif %}
+
+        <div class="exclusive-view-all-wrapper">
+            <a href="/exclusive-products/" class="exclusive-view-all-link">
+                VIEW FULL EXCLUSIVE CATALOGUE
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- testimonial  -->
+
+<section class="client-endorsements-section">
+    <div class="endorsement-container">
+        <h2 class="editorial-endorsement-heading">Client Endorsements</h2>
+        
+        <div class="endorsement-display-grid">
+            {% if site.testimonials and site.testimonials.size > 0 %}
+                {% assign latest_testimonials = site.testimonials | sort: "date" | reverse %}
+                {% for testimonial in latest_testimonials limit: 3 %}
+                <div class="endorsement-quote-item">
+                    
+                    <div class="endorsement-content">
+                        {% if testimonial.description %}
+                            <p class="quote-text">{{ testimonial.description }}</p>
+                        {% elsif testimonial.content %}
+                            <p class="quote-text">{{ testimonial.content }}</p>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="endorsement-author">
+                        <div class="author-details-wrapper">
+                            <span class="author-name">{{ testimonial.client_name }}</span>
+                            <span class="author-divider">|</span>
+                            <span class="author-location">{{ testimonial.client_location }}</span>
+                        </div>
+                        {% if testimonial.company %}
+                        <div class="author-company">{{ testimonial.company }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <div class="editorial-placeholder">
+                <h3>Endorsements Curated Soon</h3>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="endorsement-view-all-wrapper">
+            <a href="/clients/" class="editorial-view-all-link">
+                VIEW FULL CLIENT ROSTER
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- WhatsApp Floating Button -->
+<div class="whatsapp-float">
+    <a href="https://wa.me/" 
+       target="_blank" 
+       class="whatsapp-link"
+       aria-label="Contact us on WhatsApp">
+        <div class="whatsapp-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893c0-3.18-1.24-6.171-3.495-8.428"/>
+            </svg>
+        </div>
+        <span class="whatsapp-text">Chat with us</span>
+    </a>
+</div>

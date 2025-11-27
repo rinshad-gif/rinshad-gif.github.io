@@ -1,0 +1,31 @@
+<header class="header">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="{{ '/' | relative_url }}">
+                    <span class="logo-main">Her</span><span class="logo-accent"> Bird</span>
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+                {% for item in site.data.navigation %}
+                <li class="nav-item">
+                    <a href="{{ item.link | relative_url }}" class="nav-link">{{ item.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            
+            <!-- <div class="nav-utility">
+                <a href="/cart" class="utility-icon" aria-label="Shopping Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </a>
+            </div> -->
+
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+</header>
