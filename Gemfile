@@ -1,12 +1,9 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.3.3"
-gem "jekyll-feed", "~> 0.17"
-gem "jekyll-sitemap", "~> 1.4"
-gem "kramdown", "~> 2.4"
-gem "kramdown-parser-gfm", "~> 1.1"
+# This is the official GitHub Pages gem - guaranteed compatibility
+gem "github-pages", "~> 232", group: :jekyll_plugins
 
-# Windows compatibility
+# Windows compatibility (optional but safe)
 platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo", ">= 1", "< 3"
   gem "tzinfo-data"

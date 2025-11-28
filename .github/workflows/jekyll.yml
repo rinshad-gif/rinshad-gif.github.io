@@ -4,27 +4,35 @@ on:
   push:
     branches: ["main"]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'
+          ruby-version: '3.3'
           bundler-cache: true
-
+      
       - name: Install dependencies
-        run: |
-          bundle config set force_ruby_platform true
-          bundle install
-
-      - name: Build site
-        run: bundle exec jekyll build
-
+        run: bundle install
+      
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl "${{ github.event.repository.name }}"
+        env:
+          JEKYLL_ENV: production
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
