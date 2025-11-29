@@ -100,6 +100,7 @@ body {
     gap: 2rem;
     margin-left: auto;
     margin-right: 0;
+    z-index:  9998 !important; 
 }
 
 .nav-link {
@@ -301,7 +302,10 @@ body {
     }
     
     .hamburger {
-        display: block; 
+        display: flex !important;
+        position: relative !important;
+        pointer-events: auto !important;
+        z-index: 9999 !important; 
     }
 
     .nav-menu.active {
@@ -941,9 +945,10 @@ body {
 /* Mobile Responsive */
 
 .hamburger {
-    display: none;
+    display: none !important;
     flex-direction: column;
     cursor: pointer;
+    
 }
 
 .bar {
@@ -1568,7 +1573,10 @@ body {
     }
     
     .hamburger {
-        display: flex;
+        display: flex !important;
+        position: relative !important;
+        pointer-events: auto !important;
+        z-index: 9999 !important; 
     }
 }
 

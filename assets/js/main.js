@@ -1,68 +1,14 @@
 // ==========================================================
-// 1. HERO ANIMATION CLASS (Your new code for mobile fix)
-// ==========================================================
-class HeroAnimation {
-    constructor() {
-        this.container = document.getElementById('hero-canvas');
-        if (!this.container) return;
-
-        // Check if mobile and use simpler animation
-        this.isMobile = window.innerWidth <= 768;
-        
-        if (this.isMobile) {
-            this.createMobileFallback();
-            return;
-        }
-
-        // Original Three.js code for desktop...
-        // [Keep your existing desktop Three.js code here if applicable]
-    }
-
-    createMobileFallback() {
-        // Simple CSS animation for mobile instead of heavy Three.js
-        this.container.innerHTML = `
-            <div class="mobile-hero-bg" style="
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(135deg, #8B7355 0%, #D4AF37 50%, #E83C91 100%);
-                opacity: 0.4;
-                animation: mobileWave 8s ease-in-out infinite;
-            "></div>
-        `;
-        
-        // Add CSS for mobile animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes mobileWave {
-                0%, 100% { transform: scale(1) rotate(0deg); }
-                50% { transform: scale(1.1) rotate(1deg); }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        document.dispatchEvent(new Event('heroLoaded'));
-    }
-}
-
-// Initialize the Hero Animation
-new HeroAnimation();
-
-
-// ==========================================================
-// 2. MOBILE NAVIGATION AND SITE LOGIC (Your previous working code)
+// 1. MOBILE NAVIGATION AND SITE LOGIC (Must run first)
 // ==========================================================
 
-// Premium mobile navigation with enhanced performance
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     const header = document.querySelector('.header');
     
-    // FIX: Ensure navbar is always visible
+    // Safety checks for header visibility
     if (header) {
         header.style.display = 'block';
         header.style.visibility = 'visible';
@@ -86,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // === Hamburger Click Handler (Fixes Mobile Menu) ===
+    // === Hamburger Click Handler (FIXES mobile menu activation) ===
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
@@ -105,9 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // ===================================================
     
-    // Staggered menu item animations on open with fade & slide
+    // Staggered menu item animations on open/close (functions defined here)
     function animateMenuOpen() {
-        // Fade in background overlay
         navMenu.style.animation = 'fadeIn 0.4s ease-out forwards';
         
         navLinks.forEach((link, index) => {
@@ -118,53 +63,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Staggered menu item animations on close with fade & slide
     function animateMenuClose() {
         navLinks.forEach((link, index) => {
             link.style.animation = `slideOutLeft 0.5s ease-in ${index * 0.05}s forwards, fadeOut 0.3s ease-in ${index * 0.05}s forwards`;
         });
         
-        // Fade out background overlay
         setTimeout(() => {
             navMenu.style.animation = 'fadeOut 0.3s ease-in forwards';
         }, 150);
     }
     
-    // Close mobile menu when clicking on a link with smooth exit
+    // Close menu when clicking link/outside
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             if (hamburger && navMenu) {
-                hamburger.classList.remove('active');
+                // Ensure menu closes quickly on link click
                 navMenu.classList.remove('active');
-                animateMenuClose();
-                
-                if (header) {
-                    header.style.display = 'block';
-                }
+                hamburger.classList.remove('active');
             }
         });
     });
-    
-    // Close menu when clicking outside
+
+    // ... (All other logic: close on outside click, resize handler, smooth scrolling) ...
     document.addEventListener('click', function(event) {
         if (hamburger && navMenu && navMenu.classList.contains('active')) {
             if (!event.target.closest('.hamburger') && !event.target.closest('.nav-menu')) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
                 animateMenuClose();
-                
-                if (header) {
-                    header.style.display = 'block';
-                }
             }
         }
     });
     
-    // FIX: Window resize handler to ensure navbar visibility
     window.addEventListener('resize', function() {
-        if (header) {
-            header.style.display = 'block';
-        }
         if (window.innerWidth > 768 && navMenu) {
             navMenu.classList.remove('active');
             if (hamburger) {
@@ -172,33 +103,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-
-    // ... (Keep the rest of your smooth scrolling and performance logic here) ...
     
-    // ========== SMOOTH SCROLLING FIX ==========
-    
-    // Modern smooth scrolling for all anchor links
+    // Smooth Scrolling logic (Keep existing logic)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            
-            // Only handle internal anchor links
             if (href === '#' || href === '#!') return;
             
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
                 
-                // Close mobile menu first if open
                 if (navMenu && navMenu.classList.contains('active')) {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
                     animateMenuClose();
-                    
-                    // Wait for menu to close before scrolling
-                    setTimeout(() => {
-                        smoothScrollTo(target);
-                    }, 300);
+                    setTimeout(() => { smoothScrollTo(target); }, 300);
                 } else {
                     smoothScrollTo(target);
                 }
@@ -206,11 +126,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // High-performance smooth scroll function
     function smoothScrollTo(target) {
         const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
         const startPosition = window.pageYOffset;
-        const distance = targetPosition - startPosition - 80; // Offset for fixed header
+        const distance = targetPosition - startPosition - 80;
         const duration = 800;
         let startTime = null;
 
@@ -222,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (timeElapsed < duration) requestAnimationFrame(animation);
         }
 
-        // Easing function for smooth acceleration/deceleration
         function easeInOutCubic(t, b, c, d) {
             t /= d / 2;
             if (t < 1) return c / 2 * t * t * t + b;
@@ -232,36 +150,63 @@ document.addEventListener('DOMContentLoaded', function() {
 
         requestAnimationFrame(animation);
     }
-
-    // ========== PERFORMANCE OPTIMIZATIONS ==========
-    
-    // Throttled scroll handler for better performance
-    let scrollTimeout;
-    window.addEventListener('scroll', function() {
-        if (!scrollTimeout) {
-            scrollTimeout = setTimeout(function() {
-                scrollTimeout = null;
-                // Add any scroll-based animations here
-            }, 100);
-        }
-    });
-
-    // Optimize animations with will-change
-    if (navMenu) {
-        navMenu.style.willChange = 'transform, opacity';
-    }
-    navLinks.forEach(link => {
-        link.style.willChange = 'transform, opacity';
-    });
 });
 
 
 // ==========================================================
-// 3. INJECTED CSS STYLES (Keep this section outside of DOMContentLoaded)
+// 2. HERO ANIMATION CLASS (Your new code for mobile fix, runs after DOMContentLoaded)
+// ==========================================================
+class HeroAnimation {
+    constructor() {
+        this.container = document.getElementById('hero-canvas');
+        if (!this.container) return;
+
+        this.isMobile = window.innerWidth <= 768;
+        
+        if (this.isMobile) {
+            this.createMobileFallback();
+            return;
+        }
+
+        // [Keep your existing desktop Three.js code here if applicable]
+    }
+
+    createMobileFallback() {
+        this.container.innerHTML = `
+            <div class="mobile-hero-bg" style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #8B7355 0%, #D4AF37 50%, #E83C91 100%);
+                opacity: 0.4;
+                animation: mobileWave 8s ease-in-out infinite;
+            "></div>
+        `;
+        
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes mobileWave {
+                0%, 100% { transform: scale(1) rotate(0deg); }
+                50% { transform: scale(1.1) rotate(1deg); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        document.dispatchEvent(new Event('heroLoaded'));
+    }
+}
+new HeroAnimation();
+
+
+// ==========================================================
+// 3. INJECTED CSS STYLES (Keep outside DOMContentLoaded)
 // ==========================================================
 
 const navbarFixStyles = `
     .header {
+        /* Prevents disappearing on BFCache */
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
@@ -269,7 +214,7 @@ const navbarFixStyles = `
         top: 0 !important;
         width: 100% !important;
         z-index: 1000 !important;
-        transform: translateZ(0); /* Hardware acceleration */
+        transform: translateZ(0);
     }
     
     /* Smooth scrolling for the whole page */
@@ -278,65 +223,33 @@ const navbarFixStyles = `
     }
     
     /* Performance optimizations */
-    .nav-menu {
+    .nav-menu, .nav-link {
         transform: translateZ(0);
         backface-visibility: hidden;
         perspective: 1000px;
     }
     
-    .nav-link {
-        transform: translateZ(0);
-    }
-    
     @keyframes slideInLeft {
-        from {
-            opacity: 0;
-            transform: translateX(-30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
     }
     
     @keyframes slideOutLeft {
-        from {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        to {
-            opacity: 0;
-            transform: translateX(-30px);
-        }
+        from { opacity: 1; transform: translateX(0); }
+        to { opacity: 0; transform: translateX(-30px); }
     }
     
     @keyframes fadeIn {
-        from {
-            opacity: 0;
-            background: rgba(10, 10, 10, 0);
-        }
-        to {
-            opacity: 1;
-            background: rgba(10, 10, 10, 0.95);
-        }
+        from { opacity: 0; background: rgba(10, 10, 10, 0); }
+        to { opacity: 1; background: rgba(10, 10, 10, 0.95); }
     }
     
     @keyframes fadeOut {
-        from {
-            opacity: 1;
-            background: rgba(10, 10, 10, 0.95);
-        }
-        to {
-            opacity: 0;
-            background: rgba(10, 10, 10, 0);
-        }
+        from { opacity: 1; background: rgba(10, 10, 10, 0.95); }
+        to { opacity: 0; background: rgba(10, 10, 10, 0); }
     }
 
-    .nav-item {
-        background: transparent !important;
-    }
-    
-    .nav-link {
+    .nav-item, .nav-link {
         background: transparent !important;
     }
 `;
@@ -345,17 +258,3 @@ const navbarFixStyles = `
 const style = document.createElement('style');
 style.textContent = navbarFixStyles;
 document.head.appendChild(style);
-
-// ========== ADDITIONAL PERFORMANCE FIXES ==========
-
-window.addEventListener('load', function() {
-    // Add subtle parallax effect to hero (optional)
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            hero.style.transform = `translateY(${rate}px)`;
-        });
-    }
-});
