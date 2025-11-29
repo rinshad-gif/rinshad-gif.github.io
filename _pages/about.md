@@ -129,7 +129,7 @@ permalink: /about/
 /* ------------------------------------------------------------------- */
 .modern-hero {
   position: relative;
-  min-height: 60vh;
+  min-height: 40vh;
   width: 100%;
   margin: 0; 
   display: flex; 
@@ -144,6 +144,7 @@ permalink: /about/
   background: var(--hero-gradient);
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); 
   z-index: 1;
+  bottom: 50px;
 }
 .hero-content {
   position: relative;
