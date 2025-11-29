@@ -84,7 +84,7 @@ body {
     color: var(--primary-nav-color);
 }
 
-.nav-container,
+/* .nav-container,
 .nav-logo,
 .nav-menu,
 .nav-item {
@@ -102,7 +102,7 @@ body {
 .pageshow .nav-link,
 .pageshow .nav-menu {
     animation: forceRepaint 0.001s;
-}
+} */
 
 .logo-main {
     font-family: var(--logo-font);
