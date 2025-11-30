@@ -3,7 +3,7 @@ name: Floral Embroidered V Neck Zari Velvet Kurta With Trousers & Dupatta
 description: 100% Original | Delivery Available | 7-Day Returns
 price: 1652
 original_price: 4999
-offer: "67"
+offer: 67%
 category: Kurta
 featured: false
 image: /assets/images/uploads/imgi_8_bnahxzl0_45e3ad5d53414a7c95962ab35d428ff7.png
