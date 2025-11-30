@@ -16,6 +16,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Product Name", name: "name", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Short Description", name: "description", widget: "text" }
       - { label: "Full Description", name: "body", widget: "markdown" }
       - { label: "Price", name: "price", widget: "number", value_type: "float" }
@@ -50,6 +51,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "Product Name", name: "name", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Short Description", name: "description", widget: "text" }
       - { label: "Full Description", name: "body", widget: "markdown" }
       - { label: "Price", name: "price", widget: "number", value_type: "float" }
