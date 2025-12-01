@@ -3,8 +3,8 @@ email: "support@herbird.com"
 description: "High-end boutique for sophisticated fashion"
 
 # Standard Jekyll configuration for GitHub Pages subfolder
-baseurl: ""
-url: "http://her-bird.netlify.app"
+baseurl: "/Her-Bird"
+url: "https://rinshad-girl.github.io"
 
 # --- NETLIFY CMS CONFIGURATION ---
 # Netlify CMS is expected to be available at /admin/
