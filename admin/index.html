@@ -4,14 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Her Bird Admin</title>
-    <base href="/Her-Bird/admin/">
-    <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
+    
+    <!-- This is the Decap CMS library -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    
+    <!-- Link the config file (config.yml) -->
+    <link href="config.yml" type="text/yaml" rel="cms-config-element">
 </head>
 <body>
-    <script>
-        // Force CMS to load config from correct path
-        window.CMS_CONFIGURATION = '/Her-Bird/admin/config.yml';
-        CMS.init();
-    </script>
+    <!-- The Decap CMS interface will load here automatically -->
 </body>
 </html>
