@@ -21,18 +21,6 @@
     </main>
     
     {% include footer.html %}
-
-    <script>
-        if (window.netlifyIdentity) {
-          window.netlifyIdentity.on("init", user => {
-            if (!user) {
-              window.netlifyIdentity.on("login", () => {
-                document.location.href = "/admin/";
-              });
-            }
-          });
-        }
-      </script>
     
     <script src="{{ '/assets/js/three.min.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/hero-animation.js' | relative_url }}"></script>
