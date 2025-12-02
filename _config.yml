@@ -3,8 +3,8 @@ email: "support@herbird.com"
 description: "High-end boutique for sophisticated fashion"
 
 # Standard Jekyll configuration for GitHub Pages subfolder
-baseurl: "/Her-Bird"
-url: "https://rinshad-gif.github.io"
+baseurl: ""
+url: "https://rinshad-gif.github.io/Her-Bird"
 
 
 # twitter_username: "herbird"
