@@ -32,7 +32,6 @@ jobs:
       - name: Install dependencies
         run: bundle install
 
-      # ✅ BUILD JEKYLL
       - name: Build with Jekyll
         run: |
           bundle exec jekyll build --baseurl "/${{ github.event.repository.name }}"
@@ -41,7 +40,6 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      # ✅ UPLOAD SITE
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

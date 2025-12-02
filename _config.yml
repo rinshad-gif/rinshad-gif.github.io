@@ -2,15 +2,9 @@ title: "Her Bird"
 email: "support@herbird.com"
 description: "High-end boutique for sophisticated fashion"
 
-# Standard Jekyll configuration for GitHub Pages subfolder
-baseurl: ""
-url: "https://rinshad-gif.github.io/Her-Bird"
+url: "https://rinshad-gif.github.io"
+baseurl: "/Her-Bird"
 
-
-# twitter_username: "herbird"
-# github_username: "herbird"
-
-# Build settings
 theme: null
 plugins:
   - jekyll-feed
