@@ -1,67 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Her Bird Admin</title>
-    <!-- <base href="/Her-Bird/"> -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Her Bird Admin</title>
 
-    <script>
-        if (!location.href.endsWith("/")) {
-          location.href = location.href + "/";
-        }
-      </script>
-      
+  <!-- Correct base path for GitHub Pages -->
+  <base href="/Her-Bird/admin/">
+
+  <!-- Fix redirect issues -->
+  <script>
+    if (!location.href.endsWith("/")) {
+      location.href = location.href + "/";
+    }
+  </script>
 </head>
+
 <body>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <script>
-        // Load config from correct path
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <script>
     const config = {
-        backend: {
-          name: "github",
-          repo: "rinshad-gif/Her-Bird",
-          branch: "main",
-          base_url: "https://decap-oauth-21vi.vercel.app",
-          auth_endpoint: "api/auth",
-          auth_scope: "repo"
-        },
-    
-        load_config_file: false,
-        media_folder: "assets/images/uploads",
-        public_folder: "/assets/images/uploads",
-        publish_mode: "editorial_workflow",
-            // PASTE YOUR ENTIRE COLLECTIONS CONFIG HERE
-            collections: [
-  {
-    name: "products",
-    label: "Products",
-    folder: "_products",
-    create: true,
-    slug: "{{slug}}",
-    fields: [
-      { label: "Product Name", name: "name", widget: "string" },
-      { label: "Slug", name: "slug", widget: "string" },
-      { label: "Short Description", name: "description", widget: "text" },
-      { label: "Full Description", name: "body", widget: "markdown" },
-      { label: "Price", name: "price", widget: "number", value_type: "float" },
-      { label: "Original Price", name: "original_price", widget: "number", value_type: "float", required: false },
-      { label: "Offer/Discount", name: "offer", widget: "string", required: false },
-      { label: "Category", name: "category", widget: "string" },
-      { label: "Subcategory", name: "subcategory", widget: "string", required: false },
-      { label: "Featured Product", name: "featured", widget: "boolean", default: false },
-      { label: "Main Image", name: "image", widget: "image" },
-      {
-        label: "Gallery Images",
-        name: "gallery",
-        widget: "list",
-        required: false,
+      backend: {
+        name: "github",
+        repo: "rinshad-gif/Her-Bird",
+        branch: "main",
+        base_url: "https://decap-oauth-21vi.vercel.app",
+        auth_endpoint: "api/auth",
+        auth_scope: "repo"
+      },
+
+      load_config_file: false,
+      media_folder: "assets/images/uploads",
+      public_folder: "assets/images/uploads",
+      publish_mode: "editorial_workflow",
+
+      collections: [
+     {
+        name: "products",
+        label: "Products",
+        folder: "_products",
+        create: true,
+        slug: "{{slug}}",
         fields: [
+          { label: "Product Name", name: "name", widget: "string" },
+          { label: "Slug", name: "slug", widget: "string" },
+          { label: "Short Description", name: "description", widget: "text" },
+          { label: "Full Description", name: "body", widget: "markdown" },
+          { label: "Price", name: "price", widget: "number", value_type: "float" },
+          { label: "Original Price", name: "original_price", widget: "number", value_type: "float", required: false },
+          { label: "Offer/Discount", name: "offer", widget: "string", required: false },
+          { label: "Category", name: "category", widget: "string" },
+          { label: "Subcategory", name: "subcategory", widget: "string", required: false },
+          { label: "Featured Product", name: "featured", widget: "boolean", default: false },
+          { label: "Main Image", name: "image", widget: "image" },
+          {
+          label: "Gallery Images",
+          name: "gallery",
+          widget: "list",
+          required: false,
+          fields: [
           { label: "Image", name: "image", widget: "image" },
           { label: "Alt Text", name: "alt", widget: "string", required: false }
-        ]
-      },
-      {
+          ]
+          },
+          {
         label: "Product Specifications",
         name: "specifications",
         widget: "object",
