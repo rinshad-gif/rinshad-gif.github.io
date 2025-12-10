@@ -8,6 +8,7 @@ baseurl: "/Her-Bird"
 theme: null
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 # Collections configuration - FIXED
 collections:
