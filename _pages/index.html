@@ -19,7 +19,8 @@ permalink: /
                         <div class="product-image-wrapper">
                             {% if product.image %}
                             <img src="{{ product.image | relative_url }}" alt="{{ product.name }}" class="editorial-product-image">
-                            <div class="product-hover-overlay">
+                            <div class="product-hover-overlay" loading="lazy" 
+                            decoding="async">
                                 <span class="quick-view-text">Quick View</span>
                             </div>
                             {% endif %}
@@ -59,7 +60,8 @@ permalink: /
                     {% if main_exclusive_product.image %}
                         <img src="{{ main_exclusive_product.image | relative_url }}" 
                              alt="{{ main_exclusive_product.name }}" 
-                             class="exclusive-main-image">
+                             class="exclusive-main-image" loading="lazy" 
+                             decoding="async">
                     {% endif %}
                     <div class="exclusive-ribbon">Bespoke</div>
                 </div>

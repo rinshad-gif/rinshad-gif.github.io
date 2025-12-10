@@ -272,9 +272,15 @@ permalink: /products/
     font-size: 0.85rem;
     font-weight: 600;
     color: #333;
-    margin-bottom: 0.5rem;
+
     line-height: 1.3;
-    transition: color 0.3s ease;
+    height: calc(1.4em * 1); /* ✅ 1 line desktop */
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    margin-bottom: 0.5rem;
 }
 
 .product-card:hover .product-title {
@@ -317,8 +323,18 @@ permalink: /products/
     }
 
     .product-title {
-        font-size: 1rem;
-        min-height: 2.3rem;
+        font-size: 0.95rem;
+        line-height: 1.25;
+
+        /* ✅ EXACT 2 lines */
+        height: calc(1.25em * 2);
+
+        white-space: normal;
+        overflow: hidden;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
     }
 
     .view-product-btn {
@@ -341,6 +357,7 @@ permalink: /products/
         margin-bottom: 10px;
     }
 }
+
 
 /* ------------------------------------------------------------------- */
 /* WHATSAPP FLOAT BUTTON */
@@ -470,26 +487,46 @@ permalink: /products/
 
         .products-grid-full {
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.8rem 1rem;
+            gap: 1.2rem;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
         }
 
         .product-info {
-            padding: 0.8rem 0.3rem 0;
+            padding: 0.7rem 0.7rem 0.9rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
-        .product-title { 
-            font-size: 0.85rem;
-            margin-bottom: 0.6rem;
-            min-height: 2.3rem;
+        .product-title {
+            font-size: 0.9rem;
+            line-height: 1.25;
+            height: calc(0.8em * 2); /* ✅ fixed height */
+            overflow: hidden;
+        }
+
+        .product-price-section {
+            margin-top: auto; /* ✅ KEY FIX */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-right: 5px;
+            margin-left: 5px;
         }
 
         .product-price {
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         .product-offer {
-            font-size: 0.65rem !important;
-            padding: 2px 6px;
+            font-size: 0.65rem;
+            padding: 4px 10px;
+            white-space: nowrap;
         }
 
         whatsapp-float {
@@ -608,7 +645,7 @@ permalink: /products/
                 <a href="{{ product.url | relative_url }}" class="product-image-link">
                     <div class="product-image-wrapper">
                         {% if product.image %}
-                        <img src="{{ product.image | relative_url }}" alt="{{ product.name }}" loading="lazy">
+                        <img src="{{ product.image | relative_url }}" alt="{{ product.name }}" loading="lazy" decoding="async">
                         {% endif %}
                         <div class="product-overlay">
                             <button class="view-product-btn">View Product</button>

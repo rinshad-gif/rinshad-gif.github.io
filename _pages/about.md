@@ -22,7 +22,7 @@ permalink: /about/
       </div>
       <div class="story-right">
         <!-- FIXED: Use HTML img tag instead of CSS background -->
-        <img src="{{ '/assets/images/imgi_1_libaaz-and-lotus-flute-powai-mumbai-women-boutiques-4mded4mns4.png' | relative_url }}" alt="Our Office" class="story-image">
+        <img src="{{ '/assets/images/imgi_1_libaaz-and-lotus-flute-powai-mumbai-women-boutiques-4mded4mns4.png' | relative_url }}" alt="Our Office" class="story-image" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -70,7 +70,7 @@ permalink: /about/
     <div class="content-wrapper founder-grid">
       <div class="founder-img-col">
         <!-- FIXED: Use HTML img tag instead of CSS background -->
-        <img src="{{ '/assets/images/111111.png' | relative_url }}" alt="Our CEO" class="founder-image">
+        <img src="{{ '/assets/images/111111.png' | relative_url }}" alt="Our CEO" class="founder-image" loading="lazy" decoding="async">
       </div>
       <div class="founder-text-col">
         <h2>Meet Our Founder</h2>

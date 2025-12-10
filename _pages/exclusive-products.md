@@ -277,7 +277,13 @@ permalink: /exclusive-products/
     line-height: 1.3;
     transition: color 0.3s ease;
     /* FIX: Force title block height */
-    min-height: 4em; /* Must be tall enough for the longest title (e.g., 3 lines) */
+    height: calc(1.3em * 1); /* ✅ 1 line desktop */
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    margin-bottom: 0.5rem;
 }
 
 .product-card:hover .product-title {
@@ -452,10 +458,13 @@ permalink: /exclusive-products/
             padding: 0.8rem 0.3rem 0;
         }
 
-        .product-title { 
-            font-size: 0.85rem;
-            margin-bottom: 0.6rem;
-            min-height: 2.3rem;
+        .product-title {
+            font-size: 0.9rem;
+            line-height: 1.3;
+
+            /* ✅ FORCE 2 LINES */
+            height: calc(0.8em * 2);
+            overflow: hidden;
         }
 
         .product-price {
@@ -476,7 +485,7 @@ permalink: /exclusive-products/
         .exclusive-badge {
             font-size: 0.5rem;
             position: absolute;
-            top: 140px;
+            top: 10px;
             right: 10px;
             color: black;
         }
@@ -513,6 +522,14 @@ permalink: /exclusive-products/
         .product-title {
             font-size: 0.8rem;
             min-height: 2.2rem;
+            height: calc(1.25em * 2);
+
+            white-space: normal;
+            overflow: hidden;
+
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
         }
 
         .product-price {
@@ -525,6 +542,14 @@ permalink: /exclusive-products/
             margin-right: 5px;
         }
 
+        .exclusive-badge {
+            font-size: 0.5rem;
+            position: absolute;
+            top: 200px;
+            right: 10px;
+            color: black;
+        }
+
         .whatsapp-float {
             width: 50px;
             height: 50px;
@@ -535,6 +560,26 @@ permalink: /exclusive-products/
         .whatsapp-icon svg {
             width: 26px;
             height: 26px;
+        }
+    }
+
+    @media (max-width: 375px) {
+        .exclusive-badge {
+            font-size: 0.5rem;
+            position: absolute;
+            top: 170px;
+            right: 10px;
+            color: black;
+        }
+    }
+
+    @media (max-width: 320px) {
+        .exclusive-badge {
+            font-size: 0.5rem;
+            position: absolute;
+            top: 140px;
+            right: 10px;
+            color: black;
         }
     }
 
@@ -605,7 +650,7 @@ permalink: /exclusive-products/
                         <div class="exclusive-badge">Exclusive</div> 
                         
                         {% if product.image %}
-                        <img src="{{ product.image | relative_url }}" alt="{{ product.name }}" loading="lazy">
+                        <img src="{{ product.image | relative_url }}" alt="{{ product.name }}" loading="lazy" decoding="async">
                         {% endif %}
                         <div class="product-overlay">
                             <button class="view-product-btn">View Product</button>

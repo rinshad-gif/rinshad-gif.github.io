@@ -40,14 +40,88 @@
     {% include footer.html %}
     
     <!-- <script src="{{ '/assets/js/three.min.js' | relative_url }}"></script> -->
-    <script src="{{ '/assets/js/hero-animation.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/hero-gsap.js' | relative_url }}"></script>
+    <script defer src="{{ '/assets/js/hero-animation.js' | relative_url }}"></script>
+    <script defer src="{{ '/assets/js/main.js' | relative_url }}"></script>
+    <script defer src="{{ '/assets/js/hero-gsap.js' | relative_url }}"></script>
     <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <!-- ----------------- home page schema -->
+
+    {% if page.url == "/" or page.layout == "home" and page.name == "index.html" %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Her Bird",
+      "url": "{{ site.url }}{{ site.baseurl }}/",
+      "email": "support@herbird.com"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Her Bird",
+      "url": "{{ site.url }}{{ site.baseurl }}/"
+    }
+    </script>
+    {% endif %}
+
+    <!-- ------------------ product details schema -->
+
+    {% if page.collection == "products" or page.collection == "exclusive_products" %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "{{ page.name | escape }}",
+      "image": ["{{ page.image | absolute_url }}"],
+      "description": {{ page.description | jsonify }},
+      "sku": "{{ page.slug }}",
+      "offers": {
+        "@type": "Offer",
+        "url": "{{ page.url | absolute_url }}",
+        "priceCurrency": "INR", 
+        "price": "{{ page.price }}",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ site.url }}{{ site.baseurl }}/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ page.category | default: 'Products' }}",
+          "item": "{{ site.url }}{{ site.baseurl }}/products/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "{{ page.name }}",
+          "item": "{{ page.url | absolute_url }}"
+        }
+      ]
+    }
+    </script>
+    {% endif %}
+
+
 </body>
 </html>
