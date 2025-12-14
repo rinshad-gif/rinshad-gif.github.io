@@ -346,7 +346,7 @@ permalink: /clients/
 
 <div class="clients-page">
     <div class="container">
-        <h1 class="collection-header">Client Testimonials</h1>
+        <h2 class="collection-header">Client Testimonials</h2>
         <p class="page-subtitle">A curated collection of sophisticated experiences shared by our valued clients.</p>
         
         <div class="testimonials-grid-full">

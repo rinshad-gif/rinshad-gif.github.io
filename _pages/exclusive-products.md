@@ -613,7 +613,7 @@ permalink: /exclusive-products/
 <div class="products-page-container">
     
     <div class="collection-header">
-        <h1>Our Exclusive Collection</h1>
+        <h2>Our Exclusive Collection</h2>
         <p>Limited edition designer pieces tailored for you.</p>
     </div>
     

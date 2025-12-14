@@ -8,7 +8,7 @@ permalink: /contact/
 
     <section class="contact-header-refined">
         <div class="header-content-narrow">
-            <h1>Let's Connect</h1>
+            <h2>Let's Connect</h2>
             <p class="subtitle-tag">Personalized service is moments away.</p>
         </div>
     </section>

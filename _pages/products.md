@@ -610,7 +610,7 @@ permalink: /products/
 <div class="products-page-container">
     
     <div class="collection-header">
-        <h1>Our Entire Collection</h1>
+        <h2>Our Entire Collection</h2>
         <p>A curated selection of sophisticated fashion for the modern woman</p>
     </div>
     

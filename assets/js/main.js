@@ -611,14 +611,13 @@ document.head.appendChild(style);
 // ========== ADDITIONAL PERFORMANCE FIXES ==========
 
 // Optimize hero animation performance
-window.addEventListener('load', function() {
-    // Add subtle parallax effect to hero (optional)
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            hero.style.transform = `translateY(${rate}px)`;
-        });
-    }
-});
+// window.addEventListener('load', function() {
+//     const hero = document.querySelector('.hero');
+//     if (hero) {
+//         window.addEventListener('scroll', function() {
+//             const scrolled = window.pageYOffset;
+//             const rate = scrolled * -0.5;
+//             hero.style.transform = `translateY(${rate}px)`;
+//         });
+//     }
+// });

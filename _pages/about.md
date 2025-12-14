@@ -3,14 +3,30 @@ layout: page
 permalink: /about/
 ---
 
+<style>
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
+
 <div class="about-modern">
   <section class="modern-hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <h1 class="hero-premium-title">Her Bird</h1>
       <p class="hero-premium-tagline">Where Sophistication Takes Flight</p>
     </div>
   </section>
+
+  <h1 class="visually-hidden">About Her Bird Boutique</h1>
+
 
   <section class="modern-story">
     <div class="content-wrapper"> 
