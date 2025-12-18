@@ -10,10 +10,14 @@
             <ul class="nav-menu">
                 {% for item in site.data.navigation %}
                 <li class="nav-item">
-                    <a href="{{ item.link | relative_url }}" class="nav-link">{{ item.name }}</a>
+                  <a href="{{ item.link | relative_url }}"
+                     class="nav-link"
+                     {% if item.new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                    {{ item.name }}
+                  </a>
                 </li>
                 {% endfor %}
-            </ul>
+              </ul>
             
             <!-- <div class="nav-utility">
                 <a href="/cart" class="utility-icon" aria-label="Shopping Cart">

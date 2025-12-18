@@ -453,7 +453,7 @@ body {
     width: 100%;
     
     aspect-ratio: 3 / 4; 
-    cursor: url('/assets/cursors/view.png'), pointer; 
+    cursor: pointer;
 }
 
 .editorial-product-image {

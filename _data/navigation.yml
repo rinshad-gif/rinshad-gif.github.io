@@ -12,3 +12,4 @@
   link: "/contact/"
 - name: "Admin"
   link: "https://her-bird.netlify.app/admin"
+  new_tab: true
