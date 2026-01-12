@@ -675,7 +675,7 @@ permalink: /products/
                 <a href="{{ product.url | relative_url }}" class="product-image-link">
                     <div class="product-image-wrapper">
                         {% if product.image %}
-                        <img src="{{ product.image | relative_url }}" alt="{{ product.name }} – women’s fashion product" loading="lazy" decoding="async">
+                        <img src="{{ site.url }}{{ product.image }}" alt="{{ product.name }} – women’s fashion product" loading="lazy" decoding="async">
                         {% endif %}
                         <div class="product-overlay">
                             <button class="view-product-btn">View Product</button>

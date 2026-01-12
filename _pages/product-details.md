@@ -6,13 +6,15 @@ layout: default
         
         <div class="pd-gallery">
             <div class="pd-main-image">
-                <img id="mainImage" src="{{ page.image | relative_url }}" alt="{{ page.name }}" loading="lazy" decoding="async">
+                <img id="mainImage" src="{{ site.url }}{{ page.image }}" alt="{{ page.name }}" loading="lazy" decoding="async">
             </div>
+
             {% if page.gallery %}
             <div class="pd-thumbnails">
-                <img src="{{ page.image | relative_url }}" onclick="changeImage(this.src)" class="active" loading="lazy" decoding="async">
+                <img src="{{ site.url }}{{ page.image }}" onclick="changeImage(this.src)" class="active" loading="lazy" decoding="async">
+
                 {% for item in page.gallery %}
-                <img src="{{ item.image | relative_url }}" onclick="changeImage(this.src)" loading="lazy" decoding="async">
+                <img src="{{ site.url }}{{ item.image }}" onclick="changeImage(this.src)" loading="lazy" decoding="async">
                 {% endfor %}
             </div>
             {% endif %}
