@@ -38,7 +38,11 @@ permalink: /about/
       </div>
       <div class="story-right">
         <!-- FIXED: Use HTML img tag instead of CSS background -->
-        <img src="{{ '/assets/images/imgi_1_libaaz-and-lotus-flute-powai-mumbai-women-boutiques-4mded4mns4.png' | relative_url }}" alt="Our Office" class="story-image" loading="lazy" decoding="async">
+        <img src="/assets/images/imgi_1_libaaz-and-lotus-flute-powai-mumbai-women-boutiques-4mded4mns4.png"
+          alt="Our Office"
+          class="story-image"
+          loading="lazy"
+          decoding="async">
       </div>
     </div>
   </section>
@@ -86,7 +90,7 @@ permalink: /about/
     <div class="content-wrapper founder-grid">
       <div class="founder-img-col">
         <!-- FIXED: Use HTML img tag instead of CSS background -->
-        <img src="{{ '/assets/images/111111.png' | relative_url }}" alt="Our CEO" class="founder-image" loading="lazy" decoding="async">
+        <img src="/assets/images/111111.png" alt="Our CEO" class="founder-image" loading="lazy" decoding="async">
       </div>
       <div class="founder-text-col">
         <h2>Meet Our Founder</h2>
@@ -101,8 +105,8 @@ permalink: /about/
       <h2>Experience Her Bird</h2>
       <p>Step into personalized luxury fashion.</p>
       <div class="cta-btn-row">
-        <a href="{{ '/products/' | relative_url }}" class="cta-btn">Explore Collections</a>
-        <a href="{{ '/contact/' | relative_url }}" class="cta-btn alt">Get in Touch</a>
+        <a href="/products/" class="cta-btn">Explore Collections</a>
+        <a href="/contact/" class="cta-btn alt">Get in Touch</a>
       </div>
     </div>
   </section>

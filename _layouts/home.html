@@ -19,11 +19,11 @@
         {{ site.title }}
         {% endif %}
     </title>    
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="/assets/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
+    <link rel="icon" type="image/png" href="/favicon.png">
     <style>
 
     </style>
@@ -53,9 +53,9 @@
     {% include footer.html %}
     
     <!-- <script src="{{ '/assets/js/three.min.js' | relative_url }}"></script> -->
-    <script defer src="{{ '/assets/js/hero-animation.js' | relative_url }}"></script>
-    <script defer src="{{ '/assets/js/main.js' | relative_url }}"></script>
-    <script defer src="{{ '/assets/js/hero-gsap.js' | relative_url }}"></script>
+    <script defer src="/assets/js/hero-animation.js"></script>
+    <script defer src="/assets/js/main.js"></script>
+    <script defer src="/assets/js/hero-gsap.js"></script>
     <!-- Three.js -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <!-- GSAP -->
@@ -71,7 +71,7 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Her Bird",
-      "url": "{{ site.url }}{{ site.baseurl }}/",
+      "url": "{{ site.url }}/",
       "email": "support@herbird.com"
     }
     </script>
@@ -81,7 +81,7 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Her Bird",
-      "url": "{{ site.url }}{{ site.baseurl }}/"
+      "url": "{{ site.url }}/",
     }
     </script>
     {% endif %}
@@ -99,7 +99,7 @@
       "sku": "{{ page.slug }}",
       "offers": {
         "@type": "Offer",
-        "url": "{{ page.url | absolute_url }}",
+        "url": "{{ site.url }}/",
         "priceCurrency": "INR", 
         "price": "{{ page.price }}",
         "availability": "https://schema.org/InStock"
@@ -116,19 +116,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "{{ site.url }}{{ site.baseurl }}/"
+          "item": "{{ site.url }}/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "{{ page.category | default: 'Products' }}",
-          "item": "{{ site.url }}{{ site.baseurl }}/products/"
+          "item": "{{ site.url }}/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "{{ page.name }}",
-          "item": "{{ page.url | absolute_url }}"
+          "item": "{{ site.url }}/"
         }
       ]
     }

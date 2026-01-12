@@ -2,7 +2,7 @@
 layout: home
 ---
 
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="stylesheet" href="/assets/css/main.css">
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap');
@@ -298,14 +298,15 @@ layout: home
 
         <div class="pd-gallery-section">
             <div class="pd-main-image-box">
-                <img id="mainImage" src="{{ page.image | relative_url }}" alt="{{ page.name }}">
+                <img id="mainImage" src="{{ site.url }}{{ page.image }}" alt="{{ page.name }}">
             </div>
 
             {% if page.gallery %}
             <div class="pd-thumbnails">
-                <img src="{{ page.image | relative_url }}" onclick="changeImage(this.src)" class="active-thumb" alt="Thumbnail main">
+                <img src="{{ site.url }}{{ page.image }}" onclick="changeImage(this.src)" class="active-thumb" alt="Thumbnail main">
+
                 {% for item in page.gallery %}
-                <img src="{{ item.image | relative_url }}" onclick="changeImage(this.src)" alt="Thumbnail {{ forloop.index }}">
+                <img src="{{ site.url }}{{ item.image }}" onclick="changeImage(this.src)" alt="Thumbnail {{ forloop.index }}">
                 {% endfor %}
             </div>
             {% endif %}
@@ -313,8 +314,8 @@ layout: home
 
         <div class="pd-info-section">
             <p class="pd-breadcrumbs">
-                <a href="{{ '/' | relative_url }}">Home</a> / 
-                <a href="{{ '/products/' | relative_url }}">Collection</a> /
+                <a href="/">Home</a> / 
+                <a href="/products/">Collection</a> /
                 {{ page.category }}
             </p>
 
@@ -370,8 +371,8 @@ layout: home
             </div>
 
             <div class="pd-action-block">
-                <a href="{{ '/contact/' | relative_url }}" class="btn-buy">Inquire Now</a>
-                <a href="{{ '/' | relative_url }}" style="text-decoration: none;" class="btn-whatsapp" title="Inquire via WhatsApp">Back</a>
+                <a href="/contact/" class="btn-buy">Inquire Now</a>
+                <a href="/" style="text-decoration: none;" class="btn-whatsapp" title="Inquire via WhatsApp">Back</a>
             </div>
         </div>
     </div>
