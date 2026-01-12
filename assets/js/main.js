@@ -621,3 +621,63 @@ document.head.appendChild(style);
 //         });
 //     }
 // });
+
+// search
+
+const modal = document.getElementById("searchModal");
+const btn = document.getElementById("searchBtn");
+const input = document.getElementById("searchInput");
+const go = document.getElementById("searchGo");
+
+btn.onclick = () => {
+  modal.classList.remove("hidden");
+  input.focus();
+};
+
+go.onclick = doSearch;
+input.addEventListener("keydown", e => {
+  if (e.key === "Enter") doSearch();
+});
+
+function doSearch() {
+  const q = input.value.trim();
+  if (!q) return;
+  window.location.href = `/Her-Bird/search/?q=${encodeURIComponent(q)}`;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const searchBtn = document.getElementById('searchBtn'); // Your Navbar magnifying glass
+    const searchModal = document.getElementById('searchModal');
+    const closeSearch = document.getElementById('closeSearch');
+    const searchInput = document.getElementById('searchInput');
+
+    // Open Modal
+    searchBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        searchModal.classList.add('active');
+        
+        // Wait slightly for animation, then focus input
+        setTimeout(() => searchInput.focus(), 100);
+    });
+
+    // Close Modal
+    function closeSearchModal() {
+        searchModal.classList.remove('active');
+    }
+
+    closeSearch.addEventListener('click', closeSearchModal);
+
+    // Close if clicking outside the wrapper (optional, but good UX)
+    window.addEventListener('click', function(e) {
+        if (e.target === searchModal) {
+            closeSearchModal();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeSearchModal();
+        }
+    });
+});

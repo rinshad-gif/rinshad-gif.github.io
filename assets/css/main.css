@@ -1710,3 +1710,141 @@ body {
         animation: none;
     }
 }
+
+/* search */
+
+.search-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  .search-modal.hidden { display: none; }
+  
+  .search-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .nav-search-icon {
+    background: transparent;
+    border: none;
+    padding: 0;       /* Removes bulky padding that breaks alignment */
+    margin-left: 15px; /* Adjusts spacing from the 'Admin' link */
+    cursor: pointer;
+    color: white;   /* Forces icon to be White (matches your navbar text) */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle; /* Aligns icon with text baseline */
+    opacity: 0.9;     /* Slightly softer look to match your elegant theme */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-search-icon:hover {
+    opacity: 1;
+    transform: scale(1.1); /* Subtle zoom on hover */
+}
+
+.nav-search-icon svg {
+    stroke-width: 2px; /* Defines the thickness of the icon lines */
+}
+
+/* ------------------------------------------------------------------- */
+/* SEARCH MODAL - SLIDE DOWN OVERLAY */
+/* ------------------------------------------------------------------- */
+
+.search-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px; /* Specific height for the bar */
+    background: rgba(255, 255, 255, 0.98); /* Solid white with tiny transparency */
+    z-index: 9999; /* Ensure it sits on top of everything */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    
+    /* Animation Setup */
+    transform: translateY(-100%); /* Start hidden above screen */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Smooth 'Apple-like' slide */
+    visibility: hidden;
+}
+
+/* Active State (Added via JS) */
+.search-modal.active {
+    transform: translateY(0); /* Slide down */
+    visibility: visible;
+}
+
+.search-wrapper {
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #eee; /* Elegant line under input */
+}
+
+/* The Input Field */
+#searchInput {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-family: 'Playfair Display', serif; /* Matching your Brand Font */
+    font-size: 2rem; /* Large, easy to read */
+    color: #333;
+    padding: 15px 0;
+    outline: none;
+}
+
+#searchInput::placeholder {
+    color: #ccc;
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* Buttons */
+.search-confirm-btn, 
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.2s ease, color 0.2s ease;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-confirm-btn:hover {
+    color: var(--brand-color, #E83C91); /* Use your pink brand color */
+    transform: translateX(3px);
+}
+
+.close-btn {
+    margin-left: 20px;
+}
+
+.close-btn:hover {
+    color: red;
+    transform: rotate(90deg); /* Nice spin effect on hover */
+}
+
+/* Mobile Adjustment */
+@media (max-width: 600px) {
+    #searchInput {
+        font-size: 1.2rem;
+    }
+    .search-modal {
+        height: 80px;
+    }
+}

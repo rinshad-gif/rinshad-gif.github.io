@@ -1,0 +1,330 @@
+---
+layout: page
+permalink: /search/
+---
+
+<style>
+    /* ------------------------------------------------------------------- */
+    /* GLOBAL VARIABLES */
+    /* ------------------------------------------------------------------- */
+    :root {
+        --text-light: #F2F0E9;
+        --accent-color: #C64836; 
+        --brand-color: #E83C91;
+        --text-color: #540863;
+        --text-color2: #540863;
+        --dark-grey: #333;
+        --light-grey: #888;
+        --page-background: #fff;
+    }
+    
+    /* ------------------------------------------------------------------- */
+    /* BASE PAGE & HEADER */
+    /* ------------------------------------------------------------------- */
+    .products-page-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 6rem 2vw 8rem; 
+        background: var(--page-background);
+        min-height: 60vh; /* Ensures footer doesn't jump up on empty search */
+    }
+    
+    .collection-header { 
+        text-align: center; 
+        margin-bottom: 4rem;
+        position: relative;
+    }
+    
+    .collection-header h2 { 
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem; 
+        margin-bottom: 1rem;
+        color: var(--brand-color); 
+        font-weight: 300;
+        letter-spacing: 2px;
+    }
+    
+    .collection-header p {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.3rem;
+        color: var(--light-grey);
+        font-style: italic;
+        font-weight: 300;
+    }
+    
+    /* ------------------------------------------------------------------- */
+    /* PRODUCT GRID SYSTEM */
+    /* ------------------------------------------------------------------- */
+    .products-grid-full {
+        display: grid; /* Essential for grid layout */
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 2.5rem 1.75rem;
+        padding: 0;
+        width: 100%;
+    }
+    
+    /* ------------------------------------------------------------------- */
+    /* PRODUCT CARD DESIGN */
+    /* ------------------------------------------------------------------- */
+    .product-card {
+        background: #ffffff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        
+        /* Animation for appearing results */
+        animation: fadeInUp 0.5s ease-out forwards;
+        opacity: 0;
+    }
+    
+    .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .product-image-link {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .product-image-wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        border-radius: 15px 15px 0 0;
+        background: linear-gradient(135deg, #25d366 0%, #128C7E 100%);
+        box-shadow: inset 0 -40px 60px -10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .product-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 15px 15px 0 0;
+    }
+    
+    .product-card:hover .product-image-wrapper img {
+        transform: scale(1.1);
+    }
+    
+    .product-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 25px 20px;
+        opacity: 0;
+        transform: translateY(25px);
+        transition: all 0.35s ease;
+        pointer-events: none;
+        border-radius: 0 0 15px 15px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .product-card:hover .product-overlay {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+    
+    .view-product-btn {
+        padding: 8px 18px;
+        background: #ffffff;
+        color: var(--brand-color);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 5px 20px var(--brand-color);
+    }
+    
+    /* ------------------------------------------------------------------- */
+    /* TYPOGRAPHY & PRICE */
+    /* ------------------------------------------------------------------- */
+    .product-info {
+        padding: 0.8rem 0.8rem 1rem;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    
+    .product-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #333;
+        line-height: 1.3;
+        height: calc(1.4em * 1); /* 1 line desktop */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 0.5rem;
+        margin-top: 0;
+    }
+    
+    .product-card:hover .product-title {
+        color: var(--brand-color);
+    }
+    
+    .product-price-section {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-top: auto; /* Pushes price to bottom */
+    }
+    
+    .product-price {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        color: green;
+        letter-spacing: 0.5px;
+    }
+    
+    .product-offer {
+        background: linear-gradient(135deg, #FF6B6B 0%, #E83C91 100%);
+        color: #fff !important;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.75rem !important;
+        font-weight: 700;
+        padding: 5px 12px;
+        border-radius: 20px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        box-shadow: 0 3px 10px rgba(232, 60, 145, 0.35);
+    }
+    
+    /* ------------------------------------------------------------------- */
+    /* ANIMATIONS */
+    /* ------------------------------------------------------------------- */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* ------------------------------------------------------------------- */
+    /* RESPONSIVE DESIGN */
+    /* ------------------------------------------------------------------- */
+    @media (max-width: 1200px) {
+        .products-grid-full {
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .products-page-container { 
+            padding: 4rem 3vw 6rem; 
+        }
+        
+        .collection-header h2 { 
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+        }
+    
+        .products-grid-full {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+        }
+    
+        .product-info {
+            padding: 0.7rem 0.7rem 0.9rem;
+        }
+    
+        .product-title {
+            font-size: 0.9rem;
+            line-height: 1.25;
+            height: calc(1.25em * 2); /* 2 lines on mobile */
+            white-space: normal;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+        }
+    
+        .product-price-section {
+            margin-top: auto; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+    
+        .product-price {
+            font-size: 0.9rem;
+        }
+    
+        .product-offer {
+            font-size: 0.65rem;
+            padding: 4px 10px;
+            white-space: nowrap;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .products-page-container {
+            padding: 3.5rem 3vw 5rem;
+        }
+    
+        .collection-header h2 {
+            font-size: 1.8rem;
+        }
+    
+        .products-grid-full {
+            gap: 1.5rem 0.8rem;
+        }
+    
+        .product-title {
+            font-size: 0.8rem;
+            min-height: 2.2rem;
+        }
+    }
+    </style>
+
+<div class="products-page-container">
+
+  <div class="collection-header">
+    <h2>Search Results</h2>
+    <p id="search-query-label"></p>
+  </div>
+
+  <div class="products-grid-full" id="search-results"></div>
+
+</div>
+
+<div id="searchModal" class="search-modal"> <div class="search-wrapper">
+    <input id="searchInput" type="text" placeholder="Search for products..." autocomplete="off" />
+    
+    <button id="searchGo" class="search-confirm-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </button>
+
+    <button id="closeSearch" class="close-btn" aria-label="Close Search">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+</div>
+</div>
+
+
+<script src="{{ '/assets/js/search.js' | relative_url }}"></script>
+
+

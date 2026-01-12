@@ -194,6 +194,9 @@
 <loc>http://localhost:4000/Her-Bird/products/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/Her-Bird/search/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/Her-Bird/admin/</loc>
 <lastmod>2025-12-07T00:53:25+05:30</lastmod>
 </url>
