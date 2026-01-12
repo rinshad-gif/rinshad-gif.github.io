@@ -84,19 +84,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Close mobile menu when clicking on a link with smooth exit
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (hamburger && navMenu) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                animateMenuClose();
-                
-                // FIX: Ensure navbar stays visible
-                if (header) {
-                    header.style.display = 'block';
+        link.addEventListener('click', function(e) {
+    
+            // Only handle mobile menu closing
+            if (window.innerWidth <= 768) {
+                if (hamburger && navMenu) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    animateMenuClose();
                 }
             }
+    
+            // IMPORTANT: allow normal navigation
+            return true;
         });
     });
+    
     
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
@@ -642,7 +645,7 @@ input.addEventListener("keydown", e => {
 function doSearch() {
   const q = input.value.trim();
   if (!q) return;
-  window.location.href = `/Her-Bird/search/?q=${encodeURIComponent(q)}`;
+  window.location.href = `${window.location.origin}/search/?q=${encodeURIComponent(q)}`;
 }
 
 document.addEventListener('DOMContentLoaded', function() {

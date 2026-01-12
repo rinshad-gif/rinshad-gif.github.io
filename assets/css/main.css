@@ -170,28 +170,6 @@ body {
     color: var(--active-nav-color);
 }
 
-.header,
-.navbar {
-  position: fixed;
-  z-index: 99999 !important;
-  pointer-events: auto !important;
-}
-
-/* Prevent hero layers from blocking clicks */
-#hero-canvas,
-.film-grain {
-  pointer-events: none !important;
-}
-
-/* Prevent hidden search modal from blocking */
-.search-modal {
-  pointer-events: none;
-}
-
-.search-modal.active {
-  pointer-events: auto;
-}
-
 /* Hero Section */
 .hero {
     height: 100vh;

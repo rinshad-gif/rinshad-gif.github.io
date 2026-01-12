@@ -14,7 +14,7 @@ plugins:
 collections:
   products:
     output: true
-    permalink: /products/:slug/
+    permalink: /products/:name/
   exclusive_products:
     output: true
     permalink: /exclusive-products/:name/
