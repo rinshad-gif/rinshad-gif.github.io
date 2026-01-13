@@ -172,6 +172,7 @@ permalink: /about/
   justify-content: center;
   z-index: 0;
 }
+
 .hero-bg {
   position: absolute;
   width: 100%; 
