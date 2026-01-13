@@ -672,7 +672,7 @@ permalink: /products/
                  data-price="{{ product.price }}" 
                  data-date="{{ product.date | date: '%s' }}">
                 
-                <a href="{{ product.url | relative_url }}" class="product-image-link">
+                <a href="{{ product.url }}" class="product-image-link">
                     <div class="product-image-wrapper">
                         {% if product.image %}
                         <img src="{{ site.url }}{{ product.image }}" alt="{{ product.name }} – women’s fashion product" loading="lazy" decoding="async">
@@ -683,7 +683,7 @@ permalink: /products/
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">
-                            <a class="product-title" href="{{ product.url | relative_url }}" style="text-decoration: none;">
+                            <a class="product-title" href="{{ product.url }}" style="text-decoration: none;">
                                 {{ product.name }}
                             </a>
                         </h3>
