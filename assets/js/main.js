@@ -643,10 +643,11 @@ input.addEventListener("keydown", e => {
 });
 
 function doSearch() {
-  const q = input.value.trim();
-  if (!q) return;
-  window.location.href = `${window.location.origin}/search/?q=${encodeURIComponent(q)}`;
-}
+    const q = input.value.trim();
+    if (!q) return;
+    // Using relative path handles domain changes automatically
+    window.location.href = `/search/?q=${encodeURIComponent(q)}`;
+  }
 
 document.addEventListener('DOMContentLoaded', function() {
     const searchBtn = document.getElementById('searchBtn'); // Your Navbar magnifying glass
