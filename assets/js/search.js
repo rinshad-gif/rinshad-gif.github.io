@@ -1,14 +1,19 @@
-fetch("//search.json")
+// 1. Fixed the path to use single slash (root relative)
+fetch("/search.json")
   .then(res => res.json())
   .then(products => {
     const params = new URLSearchParams(window.location.search);
     const query = params.get("q") || "";
 
-    document.getElementById("search-query-label").textContent =
-      `Results for "${query}"`;
+    // Safety check: ensure the label element exists before modifying
+    const label = document.getElementById("search-query-label");
+    if (label) {
+        label.textContent = `Results for "${query}"`;
+    }
 
     const results = products.filter(p => {
       const q = query.toLowerCase();
+      // Added safety checks (?) to prevent crashes if a field is missing
       return (
         p.title?.toLowerCase().includes(q) ||
         p.description?.toLowerCase().includes(q) ||
@@ -18,13 +23,14 @@ fetch("//search.json")
     });
 
     renderResults(results);
-  });
+  })
+  .catch(err => console.error("Search failed:", err)); // Added error logging
 
-  function renderResults(results) {
+function renderResults(results) {
     const container = document.getElementById("search-results");
+    if (!container) return; // Safety check
+
     container.innerHTML = "";
-    
-    // Add the Grid class to ensure layout matches
     container.classList.add("products-grid-full");
   
     if (!results.length) {
@@ -32,11 +38,10 @@ fetch("//search.json")
       return;
     }
 
-    // 1. Define your Base URL (The folder name)
-    const baseURL = "/Her-Bird";
+    // ❌ REMOVED: const baseURL = "/Her-Bird"; 
+    // You are on the main domain now, so you don't need this prefix.
   
     results.forEach(product => {
-  
       const card = document.createElement("div");
       card.className = "product-card";
   
@@ -44,12 +49,9 @@ fetch("//search.json")
       card.setAttribute("data-price", product.price || 0);
       card.setAttribute("data-date", product.date || 0);
       
-      // 2. Fix the URL logic
-      // If the product.url from JSON doesn't start with /Her-Bird, we add it.
-      let correctUrl = product.url;
-      if (!correctUrl.startsWith(baseURL)) {
-          correctUrl = baseURL + correctUrl;
-      }
+      // ✅ USE URL DIRECTLY from Jekyll
+      // Since you fixed _config.yml, product.url is already correct (e.g., "/products/saree/")
+      const correctUrl = product.url; 
   
       card.innerHTML = `
         <a href="${correctUrl}" class="product-image-link">
@@ -78,4 +80,4 @@ fetch("//search.json")
   
       container.appendChild(card);
     });
-  }
+}
