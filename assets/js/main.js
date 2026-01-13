@@ -137,20 +137,22 @@ document.addEventListener('DOMContentLoaded', function() {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             
-            // Only handle internal anchor links
+            // 1. Ignore empty links or just "#"
             if (href === '#' || href === '#!') return;
             
+            // 2. Find the target element on THIS page
             const target = document.querySelector(href);
+            
+            // 3. CRITICAL: Only prevent default if the target actually exists on this page
             if (target) {
-                e.preventDefault();
+                e.preventDefault(); // Stop navigation only if we can scroll
                 
-                // Close mobile menu first if open
+                // Close mobile menu logic
                 if (navMenu && navMenu.classList.contains('active')) {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
                     animateMenuClose();
                     
-                    // Wait for menu to close before scrolling
                     setTimeout(() => {
                         smoothScrollTo(target);
                     }, 300);
@@ -158,6 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     smoothScrollTo(target);
                 }
             }
+            // If target is null, the browser will ignore this and navigate normally
         });
     });
 
