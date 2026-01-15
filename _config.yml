@@ -27,10 +27,11 @@ collections:
 
 # Defaults
 defaults:
-  - scope:
-      path: ""
-    values:
-      permalink: /:path/:basename/
+  # - scope:
+  #     path: "_pages"
+  #     type: "pages"
+  #   values:
+  #     layout: "page"
 
   # CHANGE 1: Update products to use the new detailed layout
   - scope:
