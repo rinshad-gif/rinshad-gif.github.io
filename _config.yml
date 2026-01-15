@@ -57,6 +57,7 @@ include:
   - _exclusive_products
   - _testimonials
   - admin  
+  - sitemap.xml
 
 # Exclude from processing
 exclude:
