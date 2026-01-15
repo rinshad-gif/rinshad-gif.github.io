@@ -33,7 +33,7 @@ permalink: /
                 {% assign latest_products = site.products | sort: "date" | reverse %}
                 {% for product in latest_products limit: 3 %}
                 <div class="editorial-product-item">
-                    <a href="{{ product.url | relative_url }}" class="product-image-link">
+                    <a href="{{ product.url }}" class="product-image-link">
                         <div class="product-image-wrapper">
                             {% if product.image %}
                             <img src="{{ site.url }}{{ product.image }}" alt="{{ product.name }}" class="editorial-product-image">
@@ -47,7 +47,7 @@ permalink: /
                     
                     <div class="product-editorial-info">
                         <h3 class="product-editorial-name">
-                            <a href="{{ product.url | relative_url }}" style="text-decoration: none; color: black;">
+                            <a href="{{ product.url }}" style="text-decoration: none; color: black;">
                                 {{ product.name }}
                             </a>
                         </h3>

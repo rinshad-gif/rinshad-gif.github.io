@@ -10,6 +10,9 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
+sitemap:
+  host: "https://rinshad-gif.github.io"
+
 # Collections configuration - FIXED
 collections:
   products:
@@ -25,10 +28,9 @@ collections:
 # Defaults
 defaults:
   - scope:
-      path: "_pages"
-      type: "pages"
+      path: ""
     values:
-      layout: "page"
+      permalink: /:path/:basename/
 
   # CHANGE 1: Update products to use the new detailed layout
   - scope:
