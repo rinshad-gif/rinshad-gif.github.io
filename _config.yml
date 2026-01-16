@@ -47,10 +47,6 @@ defaults:
       sitemap: true
 
 include:
-  - _pages
-  - _products
-  - _exclusive_products
-  - _testimonials
   - admin
 
 exclude:
