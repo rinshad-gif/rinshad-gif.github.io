@@ -28,26 +28,21 @@ defaults:
       type: "products"
     values:
       layout: "product-details"
-      sitemap: false        # ✅ ADD
+      sitemap: false
 
   - scope:
       path: "_exclusive_products"
       type: "exclusive_products"
     values:
       layout: "product-details"
-      sitemap: false        # ✅ ADD
+      sitemap: false
 
   - scope:
       path: "_testimonials"
       type: "testimonials"
     values:
       layout: "page"
-      sitemap: false        # ✅ ADD
-
-  - scope:
-      path: "_pages"
-    values:
-      sitemap: false        # ✅ ADD
+      sitemap: false
 
   - scope:
       path: ""
@@ -55,10 +50,6 @@ defaults:
       sitemap: true
 
 include:
-  - _pages
-  - _products
-  - _exclusive_products
-  - _testimonials
   - admin
 
 exclude:
