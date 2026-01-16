@@ -56,3 +56,10 @@ exclude:
   - vendor
   - .sass-cache/
   - .jekyll-cache/
+
+sitemap:
+  exclude:
+    - "/_products/"
+    - "/_exclusive_products/"
+    - "/_testimonials/"
+    - "/_pages/"
