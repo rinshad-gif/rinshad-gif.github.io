@@ -4,9 +4,9 @@ description: "High-end boutique for sophisticated fashion"
 
 url: "https://rinshad-gif.github.io"
 baseurl: ""
-relative_permalinks: false
 
 theme: null
+
 plugins:
   - jekyll-feed
   - jekyll-sitemap
