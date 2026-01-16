@@ -49,6 +49,11 @@ defaults:
     values:
       sitemap: true
 
+  - scope:
+      path: "admin"
+    values:
+      sitemap: false
+
 include:
   - admin
 
