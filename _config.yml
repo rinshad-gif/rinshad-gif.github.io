@@ -4,16 +4,13 @@ description: "High-end boutique for sophisticated fashion"
 
 url: "https://rinshad-gif.github.io"
 baseurl: ""
+relative_permalinks: false
 
 theme: null
 plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-sitemap:
-  host: "https://rinshad-gif.github.io"
-
-# Collections configuration - FIXED
 collections:
   products:
     output: true
@@ -25,22 +22,13 @@ collections:
     output: true
     permalink: /testimonials/:name/
 
-# Defaults
 defaults:
-  # - scope:
-  #     path: "_pages"
-  #     type: "pages"
-  #   values:
-  #     layout: "page"
-
-  # CHANGE 1: Update products to use the new detailed layout
   - scope:
       path: "_products"
       type: "products"
     values:
-      layout: "product-details" 
+      layout: "product-details"
 
-  # CHANGE 2: Do the same for exclusive products
   - scope:
       path: "_exclusive_products"
       type: "exclusive_products"
@@ -53,16 +41,18 @@ defaults:
     values:
       layout: "page"
 
-# Include these directories
+  - scope:
+      path: ""
+    values:
+      sitemap: true
+
 include:
   - _pages
   - _products
   - _exclusive_products
   - _testimonials
-  - admin  
-  - sitemap.xml
+  - admin
 
-# Exclude from processing
 exclude:
   - Gemfile
   - Gemfile.lock
