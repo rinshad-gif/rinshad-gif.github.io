@@ -11,6 +11,8 @@
 
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
 
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
     <title>
         {% if page.seo_title %}
         {{ page.seo_title }}

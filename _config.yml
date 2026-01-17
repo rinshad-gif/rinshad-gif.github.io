@@ -28,14 +28,14 @@ defaults:
       type: "products"
     values:
       layout: "product-details"
-      sitemap: false
+      sitemap: true
 
   - scope:
       path: "_exclusive_products"
       type: "exclusive_products"
     values:
       layout: "product-details"
-      sitemap: false
+      sitemap: true
 
   - scope:
       path: "_testimonials"
