@@ -4,7 +4,7 @@
       "@type": "Product",
       "name": {{ page.name | jsonify }},
       "image": [
-        "{{ page.image | absolute_url }}"
+        "{{ site.url }}{{ page.image }}"
       ],
       "description": {{ page.description | jsonify }},
       "sku": "{{ page.slug }}",
@@ -14,7 +14,7 @@
       },
       "offers": {
         "@type": "Offer",
-        "url": "{{ page.url | absolute_url }}",
+        "url": "{{ site.url }}",
         "priceCurrency": "INR",
         "price": "{{ page.price }}",
         "availability": "https://schema.org/InStock"
@@ -23,29 +23,29 @@
     </script>
     
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "{{ site.url }}/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Products",
-          "item": "{{ site.url }}/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": {{ page.name | jsonify }},
-          "item": "{{ site.url }}/"
-        }
-      ]
-    }
-    </script>
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "{{ site.url }}/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Products",
+            "item": "{{ site.url }}/exclusive-products/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": {{ page.name | jsonify }},
+            "item": "{{ site.url }}{{ page.url }}"
+          }
+        ]
+      }
+      </script>
     
