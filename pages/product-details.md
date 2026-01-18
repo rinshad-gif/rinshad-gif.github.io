@@ -128,3 +128,47 @@ function changeImage(src) {
         .pd-title { font-size: 22px; }
     }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ page.name | jsonify }},
+  "image": [
+    "{{ site.url }}{{ page.image }}"
+  ],
+  "description": {{ page.description | jsonify }},
+  "sku": "{{ page.slug }}",
+  "brand": {
+    "@type": "Brand",
+    "name": "Her Bird Boutique"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ site.url }}{{ page.url }}",
+    "priceCurrency": "INR",
+    "price": "{{ page.price }}",
+    "availability": "https://schema.org/InStock",
+    "priceValidUntil": "2026-12-31",
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "IN",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 0,
+        "currency": "INR"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "IN"
+      }
+    }
+  }
+}
+</script>
