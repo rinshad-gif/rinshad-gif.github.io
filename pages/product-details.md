@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Details of you product
 ---
 <div class="product-details-wrapper">
     <div class="product-details-container">

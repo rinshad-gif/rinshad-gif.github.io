@@ -1,5 +1,6 @@
 ---
 layout: page
+title: About Her Bird
 permalink: /about/
 ---
 

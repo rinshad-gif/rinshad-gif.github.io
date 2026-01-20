@@ -1,6 +1,7 @@
 ---
 layout: page
-# title: Clients & Testimonials
+title: Clients & Testimonials
+permalink: /products/
 permalink: /clients/
 ---
 

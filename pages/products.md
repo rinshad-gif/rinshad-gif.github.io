@@ -1,5 +1,6 @@
 ---
 layout: page
+title: Women's Fashion Products
 permalink: /products/
 ---
 

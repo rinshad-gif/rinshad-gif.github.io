@@ -1,6 +1,6 @@
 ---
 layout: page
-# title: Contact
+title: Contact Her Bird
 permalink: /contact/
 ---
 
