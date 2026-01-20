@@ -31,6 +31,10 @@ html {
     box-sizing: border-box;
 }
 
+.page-content h1 {
+    text-align: center;
+}
+
 body {
     font-family: 'Montserrat', sans-serif; /* Body font */
     -webkit-font-smoothing: antialiased;
