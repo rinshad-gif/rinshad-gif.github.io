@@ -26,7 +26,7 @@ permalink: /about/
     </div>
   </section>
 
-  <h1 class="visually-hidden">About Her Bird Boutique</h1>
+  <h2 class="visually-hidden">About Her Bird Boutique</h2>
 
 
   <section class="modern-story">
